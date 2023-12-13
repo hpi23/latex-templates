@@ -1,0 +1,191 @@
+\documentclass[12pt]{scrartcl}
+
+\usepackage{geometry}
+\usepackage{xcolor}
+\geometry{
+	top=3cm, %war 4
+	headheight=60pt, %war 0
+	headsep=25pt,
+	inner=1.25in,
+	outer=1.25in
+}
+
+\usepackage{emoji}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsthm,xcolor,graphicx,amsmath,amssymb,mdframed}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx} 
+\usepackage{background}
+\usepackage{lipsum}
+\usepackage{cancel}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\makeLectureName}
+\rhead{\makeStudent}
+\cfoot{\thepage}
+
+
+%%% Begin Header Definitions %%%
+\fancypagestyle{firststyle}
+{
+	\lhead{}
+	\rhead{\raisebox{0.4cm}{\includegraphics[width=4cm]{Hasso_Plattner_Institut_Logo_christmas.png}}}
+	\cfoot{}
+	\renewcommand{\headrulewidth}{0pt}
+	\vspace{10pt}
+}
+\addtolength{\headheight}{-10pt}
+
+\newcommand{\makeHeader}{
+	\begin{mdframed}
+		\noindent
+		\makeStudent \hfill \makeSemester
+		\begin{center}
+			\Large{\textbf{\makeHeadline}}
+		\end{center} 
+	\end{mdframed}
+}
+
+\providecommand\makeStudent{}
+
+\newcounter{exerciseCounterMain}
+
+\newcommand{\studentName}[1]{\renewcommand{\makeStudent}{#1}}
+\newcommand{\lectureName}[1]{\newcommand{\makeLectureName}{#1}}
+\newcommand{\semester}[1]{\newcommand{\makeSemester}{#1}}
+\newcommand{\headline}[1]{\newcommand{\makeHeadline}{#1}}
+\newcommand{\urlLine}[1]{\newcommand{\makeUrlLine}{#1}}
+\newcommand{\dueDate}[1]{\newcommand{\makeDueDate}{#1}}
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+%%% End Header Definitions %%%
+
+\definecolor{HPIblue}{RGB}{46,149,210} 
+\definecolor{HPIyellow}{RGB}{248, 156, 14}
+\definecolor{HPIorange}{RGB}{226, 86, 23}
+\definecolor{HPIgreen}{RGB}{55,139,41}
+\definecolor{HPIlime}{RGB}{115,173,105}
+\definecolor{HPIred}{RGB}{176, 12, 54}
+
+\usepackage[theorems,breakable]{tcolorbox}
+
+\newtcbtheorem[auto counter]{exerciseBox}%
+  {Aufgabe}{fonttitle=\bfseries\upshape, fontupper=\slshape\upshape,
+     arc=1mm, colback=blue!5!white,colframe=HPIred,breakable=true}{th}
+
+\newtcbtheorem[auto counter]{exerciseBoxblank}%
+  {}{fonttitle=\bfseries\upshape, fontupper=\slshape\upshape,
+     arc=1mm, colback=blue!5!white,colframe=HPIred,breakable=true}{th}
+
+\newtcbtheorem[no counter]{noteBox}%
+  {Anmerkung}{fonttitle=\bfseries\upshape, fontupper=\slshape\upshape,
+     arc=1mm, colback=green!5!white,colframe=HPIlime,breakable=true}{}
+
+\newtcbtheorem[auto counter]{solutionBox}%
+  {Lösung}{fonttitle=\bfseries\upshape, fontupper=\slshape\upshape,
+     arc=1mm, colback=blue!5!white,colframe=HPIgreen,breakable=true}{}		
+
+\newtcbtheorem[auto counter]{solutionBoxblank}%
+  {}{fonttitle=\bfseries\upshape, fontupper=\slshape\upshape,
+     arc=1mm, colback=blue!5!white,colframe=HPIgreen,breakable=true}{}	
+
+\newenvironment{exercise}[1]{\begin{exerciseBox}{#1}{}}
+{\end{exerciseBox}} 
+\newenvironment{blankexercise}[1]{\begin{exerciseBoxblank*}{#1}{}}
+{\end{exerciseBoxblank*}} 
+\newenvironment{note}[1]{\begin{noteBox*}{#1}{}}{\end{noteBox*}}
+\newenvironment{solution}{\begin{solutionBox*}{}{}}{\end{solutionBox*}}
+\newenvironment{blanksolution}{\begin{solutionBoxblank*}{}{}}{\end{solutionBoxblank*}}
+\newcommand{\points}[1]{  \hfill \textbf{#1 Punkte}}
+\newcommand{\point}{ -- \hfill \textbf{1 Punkt}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+\definecolor{darkblue}{rgb}{0, 0, 0.5}
+
+\usepackage
+[
+    bookmarks = true,
+    bookmarksopen = false,
+    bookmarksnumbered = true,
+    pdfstartpage = 1,
+    breaklinks = true,
+    colorlinks = true,
+    linkcolor = darkblue,
+    anchorcolor = darkblue,
+    citecolor = darkblue,
+    filecolor = darkblue,
+    menucolor = darkblue,
+    urlcolor = darkblue
+]
+{hyperref}
+
+
+\newcommand{\makeCompact}{%
+\setlength{\itemsep}{1pt}%
+\setlength{\parsep}{0pt}%
+\setlength{\parskip}{0pt}}
+
+\renewcommand{\comment}[1]{\textcolor{blue}{[#1]}}
+\newcommand{\ignore}[1]{}
+
+\newcommand{\set}[2]{\{ #1 \mid #2 \}}
+\newcommand{\natnum}{\mathbb{N}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\realnum}{\mathbb{R}}
+\newcommand{\Bij}{\mathcal{B}}
+
+\newcommand{\isom}{\cong}
+
+\newcommand{\FrakA}{\mathfrak{A}}
+
+\newcommand{\CalA}{\mathcal{A}}
+\newcommand{\CalC}{\mathcal{C}}
+\newcommand{\CalF}{\mathcal{F}}
+\newcommand{\CalG}{\mathcal{G}}
+\newcommand{\CalP}{\mathcal{P}}
+\newcommand{\CalM}{\mathcal{M}}
+\newcommand{\CalN}{\mathcal{N}}
+\newcommand{\CalR}{\mathcal{R}}
+\newcommand{\CalS}{\mathcal{S}}
+\newcommand{\CalX}{\mathcal{X}}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\pot}{\mathrm{Pot}}
+\newcommand{\multisol}[2]{\Biggl\lbrace {#1 \atop #2}}
+\newcommand{\eu}{\bigg|~}
+\newcommand{\uproman}[1]{\uppercase\expandafter{\romannumeral#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\range}[3]{$$\textbf{#1}~~\mathbb{#2}\xrightarrow{}\mathbb{#3}$$}
+\newcommand{\abl}[1]{\frac{d}{d#1}}
+
+
+
+\newcommand{\eqnComment}[2]{\underset{{\scriptstyle \text{#1}}}{#2}}
+
+\DeclareMathOperator{\modulo}{mod}
+\begin{document}
+
+\shorthandoff{"}
+\thispagestyle{firststyle}
+
+%%% Begin Header Specification %%%
+\semester{Wintersemester 2023/24}
+\lectureName{Mathematik 1}
+%%% End Header Specification %%%
+
+\SetBgContents{\includegraphics[width=40cm,height=\paperheight]{background.jpg}}
+\SetBgAngle{0}
+\SetBgScale{1}
+\SetBgOpacity{.5}
+\SetBgPosition{current page.west}
+\SetBgHshift{2cm}
+
+% ---------------------------------------------------------------------------
